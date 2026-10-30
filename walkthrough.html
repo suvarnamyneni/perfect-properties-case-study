@@ -1,0 +1,80 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Perfect Properties — Interactive walkthrough · Suvarna Myneni</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Acme&display=swap" rel="stylesheet">
+<style>
+:root{--muted:#b3a08f;--line:#3e2c1f;--bg:#1f150e;--panel:#2a1d14;--brand:#c4875a;--hot:rgba(196,135,90,.30)}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{font-family:Raleway,system-ui,sans-serif;background:var(--bg);color:#f4ece4;display:grid;grid-template-columns:300px 1fr;grid-template-rows:56px 1fr auto;grid-template-areas:"side top" "side stage" "side cap";overflow:hidden}
+aside{grid-area:side;background:var(--panel);border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0}
+aside .head{padding:14px 16px;border-bottom:1px solid var(--line)}
+aside .head a{color:#fff;text-decoration:none;font-weight:700;font-size:15px}
+aside .head small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+aside input{width:100%;margin-top:10px;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:#fff;font:inherit;font-size:13px}
+#list{overflow:auto;padding:6px 0 20px;flex:1}
+#list h4{margin:14px 16px 4px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand)}
+#list button{display:flex;gap:8px;width:100%;text-align:left;background:none;border:0;color:#e2d5c8;padding:6px 16px;font:inherit;font-size:13px;cursor:pointer}
+#list button span{color:var(--muted);font-variant-numeric:tabular-nums;min-width:22px}
+#list button:hover{background:#3a281b;color:#fff}
+#list button.on{background:#4a3221;color:#fff;box-shadow:inset 3px 0 var(--brand)}
+.top{grid-area:top;display:flex;align-items:center;gap:8px;padding:0 16px;border-bottom:1px solid var(--line)}
+.top .t{font-weight:600;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top .sec{color:var(--muted);font-size:13px;white-space:nowrap}
+.top .sp{flex:1}
+.ib{background:#3a281b;border:1px solid var(--line);color:#f4ece4;border-radius:8px;padding:7px 11px;font:inherit;font-size:13px;cursor:pointer;white-space:nowrap}
+.ib:hover{background:#4a3221}.ib:disabled{opacity:.4;cursor:default}
+.ib.on{background:var(--brand);border-color:var(--brand);color:#1f150e}
+#count{color:var(--muted);font-size:13px;font-variant-numeric:tabular-nums;min-width:60px;text-align:center}
+.stage{grid-area:stage;position:relative;display:flex;align-items:center;justify-content:center;padding:18px;min-height:0;min-width:0}
+#frame{position:relative;box-shadow:0 30px 80px -20px rgba(0,0,0,.7),0 0 0 8px #120c08;border-radius:28px;overflow:hidden;background:#fffcfa}
+#scroll{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none}#scroll::-webkit-scrollbar{display:none}
+#content{position:relative;width:100%}
+#content img{display:block;width:100%;height:auto;user-select:none;-webkit-user-drag:none}
+#hs{position:absolute;inset:0}
+#hs a{position:absolute;border-radius:6px;cursor:pointer;transition:background .25s,box-shadow .25s}
+#hs a:hover{background:rgba(196,135,90,.14)}
+.flash #hs a,.show #hs a{background:var(--hot);box-shadow:0 0 0 2px rgba(196,135,90,.9) inset}
+#more{position:absolute;right:10px;bottom:10px;background:#9c6644;color:#fff;font-size:11px;font-weight:600;padding:4px 9px;border-radius:999px;pointer-events:none;transition:opacity .3s}
+.cap{grid-area:cap;padding:10px 20px 14px;border-top:1px solid var(--line);font-size:14px;color:#e2d5c8;display:flex;gap:16px;align-items:center}
+.cap p{margin:0;flex:1;max-width:820px}.cap kbd{background:#3a281b;border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:11px;color:#e2d5c8}
+.hint{color:var(--muted);font-size:12px;white-space:nowrap;margin-left:auto}
+#tip{position:fixed;pointer-events:none;background:#000c;color:#fff;font-size:12px;padding:4px 8px;border-radius:6px;display:none;z-index:9}
+#menuBtn{display:none}
+@media(max-width:900px){body{grid-template-columns:1fr;grid-template-areas:"top" "stage" "cap"}aside{position:fixed;z-index:10;left:0;top:0;bottom:0;width:290px;transform:translateX(-100%);transition:transform .25s}body.nav aside{transform:none}#menuBtn{display:inline-block}.hint,.top .sec{display:none}}
+</style></head><body>
+<aside><div class="head"><a href="index.html">← Perfect Properties case study</a><small>Interactive walkthrough · Suvarna Myneni</small><input id="q" placeholder="Search screens…" aria-label="Search screens"></div><div id="list"></div></aside>
+<div class="top"><button class="ib" id="menuBtn" aria-label="Screens">☰</button><button class="ib" id="back" title="Back (Backspace)">← Back</button><div class="t" id="title"></div><div class="sec" id="sec"></div><div class="sp"></div><button class="ib" id="prev" title="Previous (←)">‹</button><span id="count"></span><button class="ib" id="next" title="Next (→)">›</button><button class="ib" id="toggle" title="Show hotspots (H)">Hotspots</button></div>
+<div class="stage" id="stage"><div id="frame"><div id="scroll"><div id="content"><img id="img" alt=""><div id="hs"></div></div></div><div id="more">Scroll ↓</div></div></div>
+<div class="cap"><p id="desc"></p><span class="hint">Click highlighted areas to navigate · scroll long screens · <kbd>←</kbd><kbd>→</kbd> prev/next · <kbd>H</kbd> hotspots · <kbd>⌫</kbd> back</span></div>
+<div id="tip"></div>
+<script src="screens.js"></script>
+<script>
+const S=window.SCREENS,PW=375,PH=812,idx={};S.forEach((s,i)=>idx[s.id]=i);
+let cur=0,hist=[],show=false;
+const $=id=>document.getElementById(id),img=$('img'),hs=$('hs'),frame=$('frame'),tip=$('tip'),sc=$('scroll'),more=$('more');
+function buildList(f=''){f=f.toLowerCase();let h='',last='';S.forEach((s,i)=>{if(f&&!(s.title+' '+s.section+' '+s.desc).toLowerCase().includes(f))return;if(s.section!==last){h+=`<h4>${s.section}</h4>`;last=s.section}h+=`<button data-i="${i}" class="${i===cur?'on':''}"><span>${i+1}</span>${s.title}</button>`});$('list').innerHTML=h}
+$('list').onclick=e=>{const b=e.target.closest('button');if(b){go(+b.dataset.i,true);document.body.classList.remove('nav')}};
+$('q').oninput=e=>buildList(e.target.value);
+// phone viewport: 375x812 aspect, scaled to the stage
+function fit(){const st=$('stage'),pw=st.clientWidth-36,ph=st.clientHeight-36;let h=ph,w=h*PW/PH;if(w>pw){w=pw;h=w*PH/PW}frame.style.width=w+'px';frame.style.height=h+'px';upd()}
+function upd(){more.style.opacity=(sc.scrollTop+sc.clientHeight<sc.scrollHeight-8)?1:0}
+sc.addEventListener('scroll',upd);addEventListener('resize',fit);
+function render(){const s=S[cur];img.src='img/'+s.file+'.webp';img.alt=s.title;img.width=s.w;img.height=s.h;$('title').textContent=s.title;$('sec').textContent='· '+s.section;$('desc').textContent=s.desc;$('count').textContent=(cur+1)+' / '+S.length;
+hs.innerHTML=s.hotspots.map(h=>`<a href="#${h.to}" data-to="${h.to}" data-l="${h.label.replace(/"/g,'&quot;')} → ${S[idx[h.to]].title.replace(/"/g,'&quot;')}" style="left:${h.x/s.w*100}%;top:${h.y/s.h*100}%;width:${h.w/s.w*100}%;height:${h.h/s.h*100}%"></a>`).join('');
+sc.scrollTop=0;$('back').disabled=!hist.length;$('prev').disabled=cur===0;$('next').disabled=cur===S.length-1;
+document.querySelectorAll('#list button').forEach(b=>b.classList.toggle('on',+b.dataset.i===cur));const on=document.querySelector('#list button.on');on&&on.scrollIntoView({block:'nearest'});
+[cur-1,cur+1].forEach(j=>{if(S[j]){const p=new Image();p.src='img/'+S[j].file+'.webp'}});s.hotspots.forEach(h=>{const p=new Image();p.src='img/'+S[idx[h.to]].file+'.webp'});
+document.title=s.title+' · Perfect Properties walkthrough';if(location.hash.slice(1)!==s.id)history.replaceState(null,'','#'+s.id);requestAnimationFrame(upd)}
+img.onload=upd;
+function go(i,push){if(i<0||i>=S.length||i===cur&&push)return;if(push)hist.push(cur);cur=i;render()}
+hs.onclick=e=>{const a=e.target.closest('a');if(a){e.preventDefault();e.stopPropagation();tip.style.display='none';go(idx[a.dataset.to],true)}};
+frame.addEventListener('click',e=>{if(e.target.closest('#hs a'))return;frame.classList.remove('flash');void frame.offsetWidth;frame.classList.add('flash');clearTimeout(frame._t);frame._t=setTimeout(()=>frame.classList.remove('flash'),700)});
+hs.onmousemove=e=>{const a=e.target.closest('a');if(a){tip.textContent=a.dataset.l;tip.style.display='block';tip.style.left=Math.min(e.clientX+14,innerWidth-tip.offsetWidth-8)+'px';tip.style.top=(e.clientY+16)+'px'}else tip.style.display='none'};
+hs.onmouseleave=()=>tip.style.display='none';
+$('back').onclick=()=>{if(hist.length){cur=hist.pop();render()}};
+$('prev').onclick=()=>go(cur-1,true);$('next').onclick=()=>go(cur+1,true);
+$('toggle').onclick=()=>{show=!show;frame.classList.toggle('show',show);$('toggle').classList.toggle('on',show)};
+$('menuBtn').onclick=()=>document.body.classList.toggle('nav');
+addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.key==='ArrowRight')go(cur+1,true);else if(e.key==='ArrowLeft')go(cur-1,true);else if(e.key==='Backspace'){e.preventDefault();$('back').click()}else if(e.key==='h'||e.key==='H')$('toggle').click()});
+addEventListener('hashchange',()=>{const i=idx[location.hash.slice(1)];if(i!==undefined&&i!==cur)go(i,true)});
+const start=idx[location.hash.slice(1)];cur=start!==undefined?start:0;buildList();render();fit();
+</script></body></html>
