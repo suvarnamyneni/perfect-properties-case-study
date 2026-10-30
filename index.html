@@ -3,7 +3,7 @@
 <meta name="description" content="UX case study by Suvarna Myneni: Perfect Properties, a mobile real estate app for searching, comparing, touring and financing a home, with its own UI kit.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Acme&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css"></head><body>
-<nav class="top"><div class="wrap"><a class="brand" href="#">Suvarna Myneni</a><div class="links"><a href="#problem">Problem</a><a href="#ia">IA</a><a href="#flows">Flows</a><a href="#decisions">Design decisions</a><a href="#kit">UI kit</a><a href="#gallery">Screens</a><a href="#reflection">Reflection</a><a href="https://suvarnamyneni-project.github.io">Portfolio</a></div><a class="btn" href="walkthrough.html">Open prototype →</a></div></nav>
+<nav class="top"><div class="wrap"><a class="brand" href="#">Suvarna Myneni</a><div class="links"><a href="#problem">Problem</a><a href="#personas">Personas</a><a href="#ia">IA</a><a href="#flows">Flows</a><a href="#decisions">Design decisions</a><a href="#kit">UI kit</a><a href="#gallery">Screens</a><a href="#reflection">Reflection</a><a href="https://suvarnamyneni-project.github.io">Portfolio</a></div><a class="btn" href="walkthrough.html">Open prototype →</a></div></nav>
 <header class="hero"><div class="wrap">
 <div class="eyebrow">UX case study · Mobile app &amp; UI kit</div>
 <h1><span class="logo">Perfect Properties</span> —<br>A calmer way to find a home</h1>
@@ -26,7 +26,28 @@
 
 <section id="users"><div class="wrap grid2">
 <div><h2>Who it’s for</h2><p>The screens point to three kinds of people, all on their phones:</p><ul class="clean"><li><b>Home buyers</b> searching an area, saving favorites and booking tours</li><li><b>Renters</b> using the same search with the Rent filter</li><li><b>Buyers who need a loan</b> and want to know where to start with a mortgage</li></ul></div>
-<div class="card"><h3>Personas &amp; research</h3><p class="note">The groups on the left are based on the features in the design, not on research data.</p></div>
+<div class="card"><h3>Personas &amp; research</h3><p>The project brief gave a clear target user, which I turned into one persona: <a href="#personas"><b>Rashida</b>, a first-time property investor</a>.</p><p class="note">The groups on the left are based on the features in the design; the persona comes from the brief, not from interviews.</p></div>
+</div></section>
+
+<section id="personas"><div class="wrap"><h2>Personas</h2><p class="lead">New, small-scale buyers investing for extra income or financial security. They search at home or on the go, and because they are new to it, they need reliable, simple information and a real feel for a place before they spend time visiting.</p>
+<div class="persona">
+<div class="p-id"><img src="img/persona-rashida.webp" alt="Portrait of Rashida, the Perfect Properties persona" width="160" height="160"><div><h3>Rashida</h3><p class="p-desc">IT consultant looking to invest in property for her family’s security</p><dl class="p-facts"><div><dt>Age</dt><dd>35</dd></div><div><dt>Location</dt><dd>San Diego, CA</dd></div><div><dt>Occupation</dt><dd>IT Consultant</dd></div><div><dt>Family</dt><dd>Married</dd></div></dl></div></div>
+<blockquote class="p-quote">“I want to provide my family with financial security. I’ve been considering buying property for a while, and am looking for a tool that can help me find what I’m looking for, quickly!”</blockquote>
+<div class="p-about"><p><b>About.</b> Rashida works for a growing tech company and is always on the move, often taking calls from her car between meetings. She juggles a lot at once and leans on technology to keep up.</p><p><b>Life outside work.</b> She hikes with her family and plays basketball with old colleagues and college friends. A colleague recently bought an investment property and nudged her to look into it too.</p></div>
+<div class="p-cols">
+<div><h4>Goals</h4><ul class="clean"><li>Invest in property outside the city for more financial security for her family</li><li>Get to the right information quickly so she can decide fast</li><li>Find properties that actually fit, without wasting time</li></ul></div>
+<div><h4>Frustrations</h4><ul class="clean"><li>Little spare time: she is busy, mobile and often searching between meetings</li><li>New to buying, so cluttered or unreliable information slows her down</li><li>Losing time on listings that don’t match what she wants</li></ul></div>
+<div><h4>Needs</h4><ul class="clean"><li>A tool that is easy to use and helps her find the right property</li><li>Search by the criteria that matter to her</li><li>A simple way to view and come back to listings she likes</li><li>Relevant, complete information about each property</li></ul></div>
+</div>
+</div>
+<h3 class="us-h">User stories</h3>
+<div class="stories">
+<div class="story"><p>As a buyer, I want to <b>search and filter properties</b> so I can find good matches for my needs.</p><p class="screens">Answered by <a href="walkthrough.html#17">Search</a> · <a href="walkthrough.html#18">Listings</a> · <a href="walkthrough.html#20">Filters</a> · <a href="walkthrough.html#19">Map view</a></p></div>
+<div class="story"><p>As a buyer, I want to <b>save or mark properties</b> I like so I can easily come back to them.</p><p class="screens">Answered by <a href="walkthrough.html#14">Home — Saved properties</a> · <a href="walkthrough.html#02">Welcome — Save</a> · <a href="walkthrough.html#21">Select to compare</a></p></div>
+<div class="story"><p>As a buyer, I want <b>as much written and visual information as possible</b> about a property so I can make an informed decision.</p><p class="screens">Answered by <a href="walkthrough.html#23">Property detail</a> · <a href="walkthrough.html#22">Compare properties</a></p></div>
+<div class="story"><p>As a buyer, I want to <b>contact the right people</b> when a property interests me so I can schedule a viewing.</p><p class="screens">Answered by <a href="walkthrough.html#26">Contact agent</a> · <a href="walkthrough.html#27">Chat — schedule a tour</a></p></div>
+</div>
+<p class="note">Persona and user stories were built from the project brief’s target user and strategic objectives, not from user interviews.</p>
 </div></section>
 
 <section id="ia"><div class="wrap"><h2>Information architecture</h2><p class="lead">The app has four main areas that follow a home search from start to finish, plus a side menu and notifications on every screen.</p>
